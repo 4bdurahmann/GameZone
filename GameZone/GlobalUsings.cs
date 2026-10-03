@@ -4,5 +4,5 @@ global using System.ComponentModel.DataAnnotations;
 global using GameZone.Models;
 global using Microsoft.AspNetCore.Mvc;
 global using System.Diagnostics;
-
-
+global using GameZone.ViewModels;
+global using Microsoft.AspNetCore.Mvc.Rendering;
