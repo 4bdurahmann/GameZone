@@ -1,0 +1,38 @@
+# Build results
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+
+# Rider / VS Code
+.idea/
+.vscode/
+
+# NuGet
+*.nupkg
+*.snupkg
+project.lock.json
+artifacts/
+
+# Publish
+publish/
+*.pubxml
+PublishProfiles/
+
+# Test results
+[Tt]est[Rr]esult*/
+*.trx
+*.coverage
+
+# Misc
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
