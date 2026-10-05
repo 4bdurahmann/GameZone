@@ -11,6 +11,7 @@ public class DevicesServices : IDevicesServices {
         return _context.Devices
             .Select(d => new SelectListItem { Value = d.Id.ToString(), Text = d.Name })
             .OrderBy(o => o.Text)
+            .AsNoTracking()
             .ToList();
     }
 }

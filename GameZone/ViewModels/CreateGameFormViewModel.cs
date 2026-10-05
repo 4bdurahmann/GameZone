@@ -14,6 +14,7 @@ namespace GameZone.ViewModels {
         [MaxLength(2500)]
         public string Description { get; set; } = string.Empty;
 
+        // TODO: Validate cover size and extension
         public IFormFile Cover { get; set; } = default!;
     }
 }
