@@ -5,6 +5,13 @@
 [Ll]og/
 [Ll]ogs/
 
+# Compiled binaries 
+*.dll
+*.exe
+*.pdb
+*.deps.json
+*.runtimeconfig.json
+
 # Visual Studio
 .vs/
 *.user
