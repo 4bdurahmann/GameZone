@@ -12,8 +12,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<ICategoriesService, CategoriesService>();
-builder.Services.AddScoped<IDevicesServices, DevicesServices>();
-builder.Services.AddScoped<IGameServices, GameServices>();
+builder.Services.AddScoped<IDevicesService, DevicesServices>();
+builder.Services.AddScoped<IGameService, GameServices>();
 
 var app = builder.Build();
 

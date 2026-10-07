@@ -1,5 +1,5 @@
 ﻿namespace GameZone.Services {
-    public class GameServices : IGameServices {
+    public class GameServices : IGameService {
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly string _imagesPath;

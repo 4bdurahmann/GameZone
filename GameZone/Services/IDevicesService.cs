@@ -1,5 +1,5 @@
 ﻿namespace GameZone.Services;
 
-public interface IDevicesServices {
+public interface IDevicesService {
     IEnumerable<SelectListItem> GetSelectedList();
 }

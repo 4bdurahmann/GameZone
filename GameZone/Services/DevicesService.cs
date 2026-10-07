@@ -1,6 +1,6 @@
 ﻿namespace GameZone.Services;
 
-public class DevicesServices : IDevicesServices {
+public class DevicesServices : IDevicesService {
     private readonly ApplicationDbContext _context;
 
     public DevicesServices(ApplicationDbContext context) {

@@ -5,10 +5,10 @@ namespace GameZone.Controllers;
 
 public class GamesController : Controller {
     private readonly ICategoriesService _categoriesService;
-    private readonly IDevicesServices _devicesServices;
-    private readonly IGameServices _gameServices;
+    private readonly IDevicesService _devicesServices;
+    private readonly IGameService _gameServices;
 
-    public GamesController(ICategoriesService categoriesService, IDevicesServices devicesServices, IGameServices gameServices) {
+    public GamesController(ICategoriesService categoriesService, IDevicesService devicesServices, IGameService gameServices) {
         _categoriesService = categoriesService;
         _devicesServices = devicesServices;
         _gameServices = gameServices;
