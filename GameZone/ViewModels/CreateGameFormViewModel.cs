@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using GameZone.Attributes;
+using GameZone.Settings;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GameZone.ViewModels {
     public class CreateGameFormViewModel {
@@ -14,7 +16,7 @@ namespace GameZone.ViewModels {
         [MaxLength(2500)]
         public string Description { get; set; } = string.Empty;
 
-        // TODO: Validate cover size and extension
+        [AllowedExtensions(FileSettings.AllowedExtension)]
         public IFormFile Cover { get; set; } = default!;
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace GameZone.Services {
+﻿using GameZone.Settings;
+
+namespace GameZone.Services {
     public class GameServices : IGameService {
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
@@ -7,7 +9,7 @@
         public GameServices(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment) {
             _context = context;
             _webHostEnvironment = webHostEnvironment;
-            _imagesPath = $"{_webHostEnvironment.WebRootPath}/assets/images/games";
+            _imagesPath = $"{_webHostEnvironment.WebRootPath}{FileSettings.ImagePath}";
         }
         public async Task Create(CreateGameFormViewModel model) {
             var coverName = $"{Guid.NewGuid()}{Path.GetExtension(model.Cover.FileName)}";
