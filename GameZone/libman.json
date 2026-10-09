@@ -2,9 +2,7 @@
   "version": "3.0",
   "defaultProvider": "cdnjs",
   "libraries": [
-
     {
-      "provider": "cdnjs",
       "library": "bootstrap-icons@1.13.1",
       "destination": "wwwroot/lib/bootstrap-icons/",
       "files": [
@@ -13,6 +11,14 @@
         "font/bootstrap-icons.css",
         "font/bootstrap-icons.json",
         "font/bootstrap-icons.min.css"
+      ]
+    },
+    {
+      "library": "select2@4.1.0",
+      "destination": "wwwroot/lib/select2",
+      "files": [
+        "js/select2.min.js",
+        "css/select2.min.css"
       ]
     }
   ]
