@@ -22,4 +22,9 @@
 	  <Folder Include="wwwroot\assets\images\games\" />
 	</ItemGroup>
 
+
+	<ItemGroup>
+	  <Content Include="wwwroot\js\filesize-validatpr.js" />
+	</ItemGroup>
+
 </Project>
