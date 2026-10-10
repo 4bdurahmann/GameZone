@@ -32,7 +32,7 @@
             <div class="form-group">
                 <label asp-for="SelectedDevices" class="form-label mt-4"></label>
                 <select class="form-select" asp-for="SelectedDevices" asp-items="Model.Devices"
-                    data-placeholder="Select a category" data-minimum-results-for-search="Infinity">
+                        data-placeholder="Select a category" data-minimum-results-for-search="Infinity">
                     <option></option>
                 </select>
                 <span asp-validation-for="SelectedDevices" class="text-danger"></span>
@@ -68,7 +68,7 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial"/>
-   <script src="~/js/game-form.js" asp-append-version="true"></script> 
-   <script src="~/js/filesize-validatpr.js" asp-append-version="true"></script> 
+    <script src="~/js/game-form.js" asp-append-version="true"></script>
+    <script src="~/js/filesize-validatpr.js" asp-append-version="true"></script>
 }
  

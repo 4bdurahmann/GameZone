@@ -1,4 +1,5 @@
-﻿using GameZone.Settings;
+﻿using System.Formats.Asn1;
+using GameZone.Settings;
 
 namespace GameZone.Services {
     public class GameServices : IGameService {
@@ -11,6 +12,16 @@ namespace GameZone.Services {
             _webHostEnvironment = webHostEnvironment;
             _imagesPath = $"{_webHostEnvironment.WebRootPath}{FileSettings.ImagePath}";
         }
+
+        public IEnumerable<Game> GetAll() {
+            return _context.Games
+                .Include(g => g.Category)
+                .Include(g => g.Devices)
+                .ThenInclude(d => d.Device)
+                .AsNoTracking()
+                .ToList();
+        }
+
         public async Task Create(CreateGameFormViewModel model) {
             var coverName = $"{Guid.NewGuid()}{Path.GetExtension(model.Cover.FileName)}";
             var path = Path.Combine(_imagesPath, coverName);
