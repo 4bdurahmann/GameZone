@@ -4,41 +4,43 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GameZone.Controllers;
 
 public class GamesController : Controller {
-    private readonly ICategoriesService _categoriesService;
-    private readonly IDevicesService _devicesServices;
-    private readonly IGameService _gameServices;
+	private readonly ICategoriesService _categoriesService;
+	private readonly IDevicesService _devicesService;
+	private readonly IGameService _gameService;
 
-    public GamesController(ICategoriesService categoriesService, IDevicesService devicesServices, IGameService gameServices) {
-        _categoriesService = categoriesService;
-        _devicesServices = devicesServices;
-        _gameServices = gameServices;
-    }
+	public GamesController(ICategoriesService categoriesService, IDevicesService devicesServices,
+		IGameService gameServices) {
+		_categoriesService = categoriesService;
+		_devicesService = devicesServices;
+		_gameService = gameServices;
+	}
 
-    public IActionResult Index() {
-        return View();
-    }
+	public IActionResult Index() {
+		var games = _gameService.GetAll();
+		return View(games);
+	}
 
-    [HttpGet]
-    public IActionResult Create() {
-        CreateGameFormViewModel viewModel = new() {
-            Categories = _categoriesService.GetSelectedList(),
-            Devices = _devicesServices.GetSelectedList()
-        };
-        return View(viewModel);
-    }
+	[HttpGet]
+	public IActionResult Create() {
+		CreateGameFormViewModel viewModel = new() {
+			Categories = _categoriesService.GetSelectedList(),
+			Devices = _devicesService.GetSelectedList()
+		};
+		return View(viewModel);
+	}
 
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(CreateGameFormViewModel model) {
-        if (!ModelState.IsValid) {
-            model.Categories = _categoriesService.GetSelectedList();
-            model.Devices = _devicesServices.GetSelectedList();
+	[HttpPost]
+	[ValidateAntiForgeryToken]
+	public async Task<IActionResult> Create(CreateGameFormViewModel model) {
+		if (!ModelState.IsValid) {
+			model.Categories = _categoriesService.GetSelectedList();
+			model.Devices = _devicesService.GetSelectedList();
 
-            return View(model);
-        }
+			return View(model);
+		}
 
-        await _gameServices.Create(model);
+		await _gameService.Create(model);
 
-        return RedirectToAction(nameof(Index));
-    }
+		return RedirectToAction(nameof(Index));
+	}
 }
