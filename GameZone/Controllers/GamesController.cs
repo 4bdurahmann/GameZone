@@ -20,6 +20,14 @@ public class GamesController : Controller {
 		return View(games);
 	}
 
+	public IActionResult Details(int id) {
+		var game = _gameService.GetById(id);
+
+		if (game is null) return NotFound();
+		
+		return View(game);
+	}
+
 	[HttpGet]
 	public IActionResult Create() {
 		CreateGameFormViewModel viewModel = new() {
