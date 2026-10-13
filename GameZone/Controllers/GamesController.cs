@@ -51,4 +51,24 @@ public class GamesController : Controller {
 
 		return RedirectToAction(nameof(Index));
 	}
+
+	[HttpGet]
+	public IActionResult Edit(int id) {
+		var game = _gameService.GetById(id);
+
+		if (game is null) return NotFound();
+
+		EditGameFormViewModel viewModel = new EditGameFormViewModel() {
+			Id = id,
+			Name = game.Name,
+			Description = game.Description,
+			CategoryId = game.CategoryId,
+			SelectedDevices = game.Devices.Select(d => d.DeviceId).ToList(),
+			Categories = _categoriesService.GetSelectedList(),
+			Devices = _devicesService.GetSelectedList(),
+			CurrentCover = game.Cover
+		};
+		
+		return View(viewModel);
+	}
 }
