@@ -71,4 +71,23 @@ public class GamesController : Controller {
 		
 		return View(viewModel);
 	}
+	
+	
+	[HttpPost]
+	[ValidateAntiForgeryToken]
+	public async Task<IActionResult> Edit(EditGameFormViewModel model) {
+		if (!ModelState.IsValid) {
+			model.Categories = _categoriesService.GetSelectedList();
+			model.Devices = _devicesService.GetSelectedList();
+			return View(model);
+		}
+
+		var game = await _gameService.Update(model);
+
+		if (game is null) {
+			return BadRequest();
+		}
+		
+		return RedirectToAction(nameof(Index));
+	}
 }
