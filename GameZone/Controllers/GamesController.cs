@@ -24,7 +24,7 @@ public class GamesController : Controller {
 		var game = _gameService.GetById(id);
 
 		if (game is null) return NotFound();
-		
+
 		return View(game);
 	}
 
@@ -68,11 +68,10 @@ public class GamesController : Controller {
 			Devices = _devicesService.GetSelectedList(),
 			CurrentCover = game.Cover
 		};
-		
+
 		return View(viewModel);
 	}
-	
-	
+
 	[HttpPost]
 	[ValidateAntiForgeryToken]
 	public async Task<IActionResult> Edit(EditGameFormViewModel model) {
@@ -87,7 +86,14 @@ public class GamesController : Controller {
 		if (game is null) {
 			return BadRequest();
 		}
-		
+
 		return RedirectToAction(nameof(Index));
+	}
+
+	[HttpDelete]
+	public IActionResult Delete(int id) {
+		var isDeleted = _gameService.Delete(id);
+
+		return isDeleted ? Ok() : BadRequest();
 	}
 }

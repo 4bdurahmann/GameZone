@@ -34,7 +34,7 @@ namespace GameZone.Services {
 
 		public async Task Create(CreateGameFormViewModel model) {
 			var coverName = await SaveCover(model.Cover);
-			
+
 			Game game = new() {
 				Name = model.Name,
 				Description = model.Description,
@@ -81,6 +81,23 @@ namespace GameZone.Services {
 				File.Delete(cover);
 				return null;
 			}
+		}
+
+		public bool Delete(int id) {
+			var isDeleted = false;
+			var game = _context.Games.Find(id);
+
+			if (game is null) return isDeleted;
+			_context.Remove(game);
+
+			var effectedGames = _context.SaveChanges();
+			if (effectedGames > 0) {
+				isDeleted = true;
+				var cover = Path.Combine(_imagesPath, game.Cover);
+				File.Delete(cover);
+			}
+
+			return isDeleted;
 		}
 
 		private async Task<string> SaveCover(IFormFile cover) {
