@@ -92,6 +92,7 @@ public class GamesController : Controller {
 
 	[HttpDelete]
 	public IActionResult Delete(int id) {
+		return BadRequest();
 		var isDeleted = _gameService.Delete(id);
 
 		return isDeleted ? Ok() : BadRequest();
